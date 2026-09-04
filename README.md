@@ -9,9 +9,13 @@
   <img src="https://img.shields.io/badge/TypeScript-5.7-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/Vite-6.2-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
-  <img src="https://img.shields.io/badge/Firebase-12.18-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase" />
+  <img src="https://img.shields.io/badge/Firebase_Hosting-Live-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase Hosting" />
   <img src="https://img.shields.io/badge/Vitest-Passing-47A248?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest" />
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License" />
+</p>
+
+<p align="center">
+  🌐 <strong>Trải nghiệm ứng dụng trực tuyến tại:</strong> <a href="https://web-chu-nhiem-16862.web.app" target="_blank"><strong>https://web-chu-nhiem-16862.web.app</strong></a>
 </p>
 
 ---
