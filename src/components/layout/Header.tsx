@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { UserRole } from '../../types';
 import { LoginModal } from '../auth/LoginModal';
+import { ClassLogo } from '../common/ClassLogo';
 
 export const Header: React.FC = () => {
   const {
@@ -36,9 +37,7 @@ export const Header: React.FC = () => {
           
           {/* Logo & School/Class Info */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-600/20 shrink-0">
-              <GraduationCap className="w-6 h-6" />
-            </div>
+            <ClassLogo size="md" />
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="font-bold text-slate-800 text-base sm:text-lg leading-tight">

@@ -4,6 +4,7 @@ import { Header } from './components/layout/Header';
 import { Navbar, NavTab } from './components/layout/Navbar';
 import { ToastContainer } from './components/common/ToastContainer';
 import { QuickGradingModal } from './components/common/QuickGradingModal';
+import { WelcomeScreen } from './components/auth/WelcomeScreen';
 import { formatDateISO } from './utils/dateUtils';
 
 // Modules
@@ -17,9 +18,19 @@ import { PersonalConduct } from './components/modules/PersonalConduct';
 import { ClassSettings } from './components/modules/ClassSettings';
 
 const MainContent: React.FC = () => {
-  const { currentWeek } = useApp();
+  const { currentWeek, currentUser } = useApp();
   const [activeTab, setActiveTab] = useState<NavTab>('overview');
   const [quickGradingOpen, setQuickGradingOpen] = useState(false);
+
+  // Khi chưa đăng nhập, hiển thị màn hình chờ (Welcome Gateway Screen)
+  if (!currentUser) {
+    return (
+      <>
+        <WelcomeScreen />
+        <ToastContainer />
+      </>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col">

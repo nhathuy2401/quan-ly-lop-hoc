@@ -12,4 +12,11 @@ if (typeof window !== 'undefined') {
     close() {}
   }
   (window as any).BroadcastChannel = MockBroadcastChannel;
+
+  class MockResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  (window as any).ResizeObserver = MockResizeObserver;
 }

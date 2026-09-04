@@ -5,6 +5,7 @@ import { render, screen, fireEvent, waitFor, within } from '@testing-library/rea
 import { AppProvider, useApp } from '../context/AppContext';
 import { Header } from '../components/layout/Header';
 import { LoginModal } from '../components/auth/LoginModal';
+import { App } from '../App';
 
 // Mock firebaseService so tests don't make real network calls
 vi.mock('../services/firebaseService', () => ({
@@ -334,6 +335,34 @@ describe('Authentication & Header State Test Suite', () => {
       const profileEl = screen.getByTestId('header-user-profile');
       expect(profileEl).toBeInTheDocument();
       expect(screen.queryByTestId('header-login-btn')).not.toBeInTheDocument();
+    });
+  });
+
+  it('TC-10: Khi chưa đăng nhập, render <App /> hiển thị màn hình chờ (WelcomeScreen), không lộ dashboard nội bộ', () => {
+    render(<App />);
+
+    // Phải hiển thị màn hình chờ với các nút vai trò
+    expect(screen.getByText(/hệ thống quản lý lớp học thông minh/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /vào vai trò gvcn/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /vào ban cán sự/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /xem bảng tin/i })).toBeInTheDocument();
+
+    // Không được hiển thị thanh navbar 8 tabs hay bảng điểm tuần
+    expect(screen.queryByText(/nhập điểm tuần/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/thi đua theo tổ/i)).not.toBeInTheDocument();
+  });
+
+  it('TC-11: Tại màn hình chờ, bấm "Vào vai trò GVCN" -> Vào ngay dashboard chính', async () => {
+    render(<App />);
+
+    const gvcnEntryBtn = screen.getByRole('button', { name: /vào vai trò gvcn/i });
+    fireEvent.click(gvcnEntryBtn);
+
+    await waitFor(() => {
+      // Đã vào dashboard: hiển thị header user profile và chức năng lớp học
+      expect(screen.getByTestId('header-user-profile')).toBeInTheDocument();
+      expect(screen.getByText(/nhập điểm tuần/i)).toBeInTheDocument();
+      expect(screen.queryByText(/hệ thống quản lý lớp học thông minh/i)).not.toBeInTheDocument();
     });
   });
 });
